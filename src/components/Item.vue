@@ -5,7 +5,7 @@
   <v-card color="grey lighten-2">
     <v-card-title>
       <h3 class="pad-right">{{ item.name }}</h3>
-      <v-btn dark large @click="$emit('addToCart', item)">Add to Cart</v-btn>
+      <button type="button" class="large-txt-dark-button btn btn-primary" @click="$emit('addToCart', item)">Add to Cart</button>
     </v-card-title>
   </v-card>
 </template>

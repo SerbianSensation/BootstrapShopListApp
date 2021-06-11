@@ -60,7 +60,7 @@
       </v-list-item>
 
       <!-- add button to clear cart !-->
-      <v-btn dark large @click="clearCart()">Clear Cart</v-btn>
+      <button type="button" class="large-txt-dark-button btn btn-danger"dark large @click="clearCart()">Clear Cart</button>
     </div>
   </v-list>
 </template>

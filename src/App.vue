@@ -77,8 +77,10 @@ export default {
   padding: 40px;
 }
 
-.large-button-txt {
+.large-txt-dark-button {
   font-size: large;
+  background-color: black;
+  color: white;
 }
 
 .icon {
