@@ -15,11 +15,11 @@
         <v-list-item-content>Quantity: {{ item.order }}</v-list-item-content>
 
         <v-list-item-action>
-          <v-icon @click="incOrder(item.id)">add_circle</v-icon>
+          <b-icon-plus-circle font-scale="1.25" @click="incOrder(item.id)"></b-icon-plus-circle>
         </v-list-item-action>
 
         <v-list-item-action>
-          <v-icon class="pad-left" @click="updateComplete(item.id)">check_circle</v-icon>
+          <b-icon-check-circle class="pad-left" font-scale="2.25" @click="updateComplete(item.id)"></b-icon-check-circle>
         </v-list-item-action>
 
         <v-list-item-action>
@@ -27,7 +27,7 @@
         </v-list-item-action>
 
         <v-list-item-action>
-          <v-icon @click="removeFromCart(item)">delete</v-icon>
+          <b-icon-trash-fill font-scale="1.25" @click="removeFromCart(item)"></b-icon-trash-fill>
         </v-list-item-action>
       </v-list-item>
 
@@ -43,11 +43,11 @@
         <v-list-item-content>Quantity: {{ item.order }}</v-list-item-content>
 
         <v-list-item-action>
-          <v-icon @click="incOrder(item.id)">add_circle</v-icon>
+          <b-icon-plus-circle font-scale="1.25" @click="incOrder(item.id)"></b-icon-plus-circle>
         </v-list-item-action>
 
         <v-list-item-action>
-          <v-icon class="pad-left" @click="updateComplete(item.id)">cancel</v-icon>
+          <b-icon-check-circle class="pad-left" font-scale="2.25" @click="updateComplete(item.id)"></b-icon-check-circle>
         </v-list-item-action>
 
         <v-list-item-action>
@@ -55,7 +55,7 @@
         </v-list-item-action>
 
         <v-list-item-action>
-          <v-icon @click="removeFromCart(item)">delete</v-icon>
+          <b-icon-trash-fill font-scale="1.25" @click="removeFromCart(item)"></b-icon-trash-fill>
         </v-list-item-action>
       </v-list-item>
 
