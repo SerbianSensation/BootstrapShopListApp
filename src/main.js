@@ -3,17 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import vuetify from "@/plugins/vuetify"
-import store from './store/store';
+import vuetify from '@/plugins/vuetify'
+import store from './store/store'
 
 //import bootstrap and uiv
-import 'bootstrap3/dist/css/bootstrap.min.css';
+import 'bootstrap3/dist/css/bootstrap.min.css'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-import * as uiv from 'uiv';
+import * as uiv from 'uiv'
 
-Vue.use(uiv);
-Vue.use(BootstrapVue);
-Vue.use(BootstrapVueIcons);
+Vue.use(uiv)
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 
 Vue.config.productionTip = false
 

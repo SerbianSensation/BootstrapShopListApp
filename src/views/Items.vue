@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex';
+import { mapActions } from 'vuex';
 //import items (to purchase) from data/items.js
 import { Items } from "../data/items";
 //import Item component
