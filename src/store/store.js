@@ -42,6 +42,11 @@ export default new Vuex.Store({
       const item = state.cart.find(item => item.id === id);
       item.order += 1;
     },
+    decOrder(state, id) {
+      //filter out the item from cart list using id
+      const item = state.cart.find(item => item.id === id);
+      item.order -= 1;
+    },
     updateCurrentItem(state, payload) {
       state.item = payload;
     },
@@ -160,6 +165,27 @@ export default new Vuex.Store({
           console.log(error);
           alert("Item quantity could not be incremented. Something went wrong, try again later.");
         });
+    },
+    decOrder({ commit, state }, id) {
+      //filter out the item from cart list using id
+      const item = state.cart.find(item => item.id === id);
+      let num = parseInt(item.order);
+      //only decrement if the number is greater than 1
+      if(num <= 1) {
+        alert("Item in the cart must have a quantity of 1 or more!");
+      }
+      else {
+        num -= parseInt(1);
+        //PATCH to API (baseURL/:id)
+        axios.patch(baseURL + "/" + id, { order: num })
+          .then(() => {
+            commit("decOrder", id);
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Item quantity could not be decremented. Something went wrong, try again later.");
+          });
+      }
     },
     updateCurrentItem({ commit }, payload) {
       commit("updateCurrentItem", payload);

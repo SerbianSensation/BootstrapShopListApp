@@ -15,6 +15,7 @@
           <span class="pad-left">Complete: {{ item.complete }} Quantity: {{ item.order }}</span>
           <div class="pull-right">
             <b-icon-plus-circle class="icon" @click="incOrder(item.id)"></b-icon-plus-circle>
+            <b-icon-patch-minus class="icon" @click="decOrder(item.id)"></b-icon-patch-minus>
             <b-icon-check-circle class="icon" @click="updateComplete(item.id)"></b-icon-check-circle>
             <router-link :to="{ name: 'editForm', params: { id: item.id } }">
               <b-icon-pencil-fill class="icon"></b-icon-pencil-fill>
@@ -36,6 +37,7 @@
           <span class="pad-left">Complete: {{ item.complete }} Quantity: {{ item.order }}</span>
           <div class="pull-right">
             <b-icon-plus-circle class="icon" @click="incOrder(item.id)"></b-icon-plus-circle>
+            <b-icon-patch-minus class="icon" @click="decOrder(item.id)"></b-icon-patch-minus>
             <b-icon-x-circle-fill class="icon" @click="updateComplete(item.id)"></b-icon-x-circle-fill>
             <router-link :to="{ name: 'editForm', params: { id: item.id } }">
               <b-icon-pencil-fill class="icon" font-scale="2.25"></b-icon-pencil-fill>
@@ -82,7 +84,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["removeFromCart", "updateComplete", "updateCurrentItem", "clearCart", "incOrder"])
+    ...mapActions(["removeFromCart", "updateComplete", "updateCurrentItem", "clearCart", "incOrder", "decOrder"])
   },
   mounted() {
     this.$store.dispatch("getCart");

@@ -45,11 +45,7 @@ export default {
       return this.$store.state.item;
     },
     isValid() {
-      if(this.name !== "" && this.name && this.name.length > 2 && !isNaN(this.order) && this.order > 0) {
-        return true;
-      } else {
-        return false;
-      }
+      return this.name !== "" && this.name && this.name.length > 2 && !isNaN(this.order) && this.order > 0;
     }
   },
   methods: {
