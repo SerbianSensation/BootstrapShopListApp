@@ -23,7 +23,7 @@
         </v-list-item-action>
 
         <v-list-item-action>
-          <router-link :to="{ name: 'editForm', params: {id: item.id } }">
+          <router-link :to="{ name: 'editForm', params: { id: item.id } }">
             <b-icon-pencil-fill class="pad-left" font-scale="2.25"></b-icon-pencil-fill>
           </router-link>
         </v-list-item-action>
@@ -53,7 +53,7 @@
         </v-list-item-action>
 
         <v-list-item-action>
-          <router-link :to="{ name: 'editForm', params: {id: item.id } }">
+          <router-link :to="{ name: 'editForm', params: { id: item.id } }">
             <b-icon-pencil-fill class="pad-left" font-scale="2.25"></b-icon-pencil-fill>
           </router-link>
         </v-list-item-action>
@@ -64,7 +64,7 @@
       </v-list-item>
 
       <!-- add button to clear cart !-->
-      <button type="button" class="large-txt-dark-button btn btn-danger"dark large @click="clearCart()">Clear Cart</button>
+      <button type="button" class="large-txt-dark-button btn btn-danger" @click="clearCart()">Clear Cart</button>
     </div>
   </v-list>
 </template>
@@ -108,9 +108,5 @@ export default {
 <style>
 .pad-left {
   padding-left: 14px;
-}
-.text-left {
-  text-align: left;
-  padding: 20px;
 }
 </style>

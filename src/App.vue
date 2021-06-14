@@ -58,6 +58,11 @@ export default {
   padding: 40px;
 }
 
+.text-left {
+  text-align: left;
+  padding: 20px;
+}
+
 .large-txt-dark-button {
   font-size: large;
   background-color: black;

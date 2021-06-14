@@ -2,12 +2,10 @@
 <!-- This reduces the amount of code and makes it cleaner and easier to understand !-->
 
 <template>
-  <v-card color="grey lighten-2">
-    <v-card-title>
-      <h3 class="pad-right">{{ item.name }}</h3>
-      <button type="button" class="large-txt-dark-button btn btn-primary" @click="$emit('addToCart', item)">Add to Cart</button>
-    </v-card-title>
-  </v-card>
+  <div class="list-group-item text-left">
+    <h3 class="pad-right">{{ item.name }}</h3>
+    <button type="button" class="large-txt-dark-button btn btn-primary pull-right add-cart-btn" @click="$emit('addToCart', item)">Add to Cart</button>
+  </div>
 </template>
 
 <script>
@@ -23,6 +21,10 @@ export default {
 <style>
 .pad-right {
   padding-right: 12px;
+}
+.add-cart-btn {
+  position: relative;
+  bottom: 35px;
 }
 </style>
 
