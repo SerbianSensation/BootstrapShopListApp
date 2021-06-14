@@ -1,24 +1,27 @@
 <template>
-  <div class="form-wrapper" v-model="valid">
-    <div class="form-group">
-      <label for="item name">Item</label>
-      <input type="text" class="form-control" required id="item name" v-model="name" :rules="nameRules" :placeholder="item.name">
-    </div>
-    <div class="form-group">
-      <!-- require a number for the quantity (order) field !-->
-      <label for="quantity">Quantity</label>
-      <input type="number" class="form-control" required id="quantity" v-model="order" :rules="quantityRules" :placeholder="item.order.toString()">
-    </div>
+  <div class="form-wrapper">
+    <form>
+      <div class="form-group">
+        <label for="item name">Item</label>
+        <input type="text" class="form-control" required id="item name" v-model="name" :placeholder="item.name" />
+      </div>
+      <div class="form-group">
+        <!-- require a number for the quantity (order) field !-->
+        <label for="quantity">Quantity</label>
+        <input type="number" class="form-control" required id="quantity" v-model="order" :placeholder="item.order" />
+      </div>
       <!-- radio buttons for complete/incomplete !-->
-    <div>
-      <input type="radio" id="done" value="true" v-model="complete">
-      <label for="done">Complete</label>
-      <br>
-      <input type="radio" id="undone" value="false" v-model="complete">
-      <label for="undone">Incomplete</label>
-    </div>
+      <div>
+        <input type="radio" id="done" value="true" v-model="complete">
+        <label for="done">Complete</label>
+        <br>
+        <input type="radio" id="undone" value="false" v-model="complete">
+        <label for="undone">Incomplete</label>
+      </div>
 
-    <button type="button" class="large-txt-dark-button btn btn-success" :disabled="!valid" @click="submit()">Submit</button>
+      <button type="submit" v-if="isValid" class="large-txt-dark-button btn btn-success" @click="submit()">Submit</button>
+    </form>
+
   </div>
 
 </template>
@@ -32,14 +35,6 @@ export default {
       name: "",
       order: "",
       complete: false,
-      valid: true,
-      nameRules: [
-        (name) => !!name || 'Item name is required',
-        (name) => name.length > 2 || 'Item name must be longer than 2 characters',
-      ],
-      quantityRules: [
-        (order) => !!order || 'Quantity is required'
-      ]
     };
   },
   created() {
@@ -48,6 +43,13 @@ export default {
   computed: {
     item() {
       return this.$store.state.item;
+    },
+    isValid() {
+      if(this.name !== "" && this.name && this.name.length > 2 && !isNaN(this.order) && this.order > 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   methods: {
