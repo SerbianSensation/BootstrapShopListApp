@@ -74,5 +74,6 @@ export default {
   height: 25px;
   position: relative;
   top: 20px;
+  cursor: pointer;
 }
 </style>
