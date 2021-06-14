@@ -4,7 +4,7 @@
     <div v-else>
       <h2 class="pad">Shopping Cart</h2>
       <!-- search bar !-->
-      <v-icon>search</v-icon>
+      <b-icon-search></b-icon-search>
       <input type="text" v-model="searchIncomplete" placeholder="Search Incomplete Items" /> <br>
       <!-- loop through non-completed items first !-->
       <h3 class="text-left">Incomplete Items</h3>
@@ -23,16 +23,18 @@
         </v-list-item-action>
 
         <v-list-item-action>
-          <v-btn icon class="pad-left" :to="{ name: 'editForm', params: {id: item.id } }"><v-icon>edit</v-icon></v-btn>
+          <router-link :to="{ name: 'editForm', params: {id: item.id } }">
+            <b-icon-pencil-fill class="pad-left" font-scale="2.25"></b-icon-pencil-fill>
+          </router-link>
         </v-list-item-action>
 
         <v-list-item-action>
-          <b-icon-trash-fill font-scale="1.25" @click="removeFromCart(item)"></b-icon-trash-fill>
+          <b-icon-trash-fill class="pad-left" font-scale="2.25" @click="removeFromCart(item)"></b-icon-trash-fill>
         </v-list-item-action>
       </v-list-item>
 
       <!-- search bar !-->
-      <v-icon>search</v-icon>
+      <b-icon-search></b-icon-search>
       <input type="text" v-model="searchComplete" placeholder="Search Complete Items" /> <br>
       <!-- loop through completed items first !-->
       <h3 class="text-left">Completed Items</h3>
@@ -47,15 +49,17 @@
         </v-list-item-action>
 
         <v-list-item-action>
-          <b-icon-check-circle class="pad-left" font-scale="2.25" @click="updateComplete(item.id)"></b-icon-check-circle>
+          <b-icon-x-circle-fill class="pad-left" font-scale="2.25" @click="updateComplete(item.id)"></b-icon-x-circle-fill>
         </v-list-item-action>
 
         <v-list-item-action>
-          <v-btn icon class="pad-left" :to="{ name: 'editForm', params: {id: item.id } }"><v-icon>edit</v-icon></v-btn>
+          <router-link :to="{ name: 'editForm', params: {id: item.id } }">
+            <b-icon-pencil-fill class="pad-left" font-scale="2.25"></b-icon-pencil-fill>
+          </router-link>
         </v-list-item-action>
 
         <v-list-item-action>
-          <b-icon-trash-fill font-scale="1.25" @click="removeFromCart(item)"></b-icon-trash-fill>
+          <b-icon-trash-fill class="pad-left" font-scale="2.25" @click="removeFromCart(item)"></b-icon-trash-fill>
         </v-list-item-action>
       </v-list-item>
 

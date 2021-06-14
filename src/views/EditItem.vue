@@ -14,7 +14,7 @@
         <label for="undone">Incomplete</label>
       </div>
 
-      <v-btn @click="submit()" :disabled="!valid">Submit</v-btn>
+      <button type="button" class="large-txt-dark-button btn btn-success"dark large :disabled="!valid" @click="submit()">Submit</button>
     </v-form>
   </div>
 </template>
