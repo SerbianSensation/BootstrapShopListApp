@@ -58,8 +58,7 @@ export default {
       const item = {
         id: this.item.id,
         name: this.name,
-        //use Number() here?
-        order: this.order,
+        order: Number(this.order),
         complete: this.complete
       }
       this.checkItem(item);
