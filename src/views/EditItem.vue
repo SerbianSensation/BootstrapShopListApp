@@ -1,22 +1,26 @@
 <template>
-  <div class="form-wrapper">
-    <v-form v-model="valid">
-      <v-text-field label="Item" required :rules="nameRules" v-model="name" :placeholder="item.name"></v-text-field>
+  <div class="form-wrapper" v-model="valid">
+    <div class="form-group">
+      <label for="item name">Item</label>
+      <input type="text" class="form-control" required id="item name" v-model="name" :rules="nameRules" :placeholder="item.name">
+    </div>
+    <div class="form-group">
       <!-- require a number for the quantity (order) field !-->
-      <v-text-field type="number" label="Quantity" required :rules="quantityRules" v-model="order" :placeholder="item.order.toString()"></v-text-field>
-
+      <label for="quantity">Quantity</label>
+      <input type="number" class="form-control" required id="quantity" v-model="order" :rules="quantityRules" :placeholder="item.order.toString()">
+    </div>
       <!-- radio buttons for complete/incomplete !-->
-      <div>
-        <input type="radio" id="done" value="true" v-model="complete">
-        <label for="done">Complete</label>
-        <br>
-        <input type="radio" id="undone" value="false" v-model="complete">
-        <label for="undone">Incomplete</label>
-      </div>
+    <div>
+      <input type="radio" id="done" value="true" v-model="complete">
+      <label for="done">Complete</label>
+      <br>
+      <input type="radio" id="undone" value="false" v-model="complete">
+      <label for="undone">Incomplete</label>
+    </div>
 
-      <button type="button" class="large-txt-dark-button btn btn-success" :disabled="!valid" @click="submit()">Submit</button>
-    </v-form>
+    <button type="button" class="large-txt-dark-button btn btn-success" :disabled="!valid" @click="submit()">Submit</button>
   </div>
+
 </template>
 
 <script>
@@ -52,6 +56,7 @@ export default {
       const item = {
         id: this.item.id,
         name: this.name,
+        //use Number() here?
         order: this.order,
         complete: this.complete
       }

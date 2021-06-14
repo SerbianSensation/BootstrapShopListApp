@@ -24,6 +24,7 @@
         </div>
       </div>
 
+      <br />
       <!-- search bar !-->
       <b-icon-search></b-icon-search>
       <input type="text" v-model="searchComplete" placeholder="Search Complete Items" /> <br>
