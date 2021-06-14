@@ -2,14 +2,14 @@
   <div>
     <h2 class="pad">Shopping List Items</h2>
     <!-- search bar !-->
-    <v-icon>search</v-icon>
+    <b-icon-search></b-icon-search>
     <input type="text" v-model="search" placeholder="Search Items" /> <br>
     <!-- v-for to go through all items !-->
-    <v-flex v-for="item in filteredItems" :key="item.id">
+    <div v-for="item in filteredItems" :key="item.id">
       <!-- insert Item component (app-item because HTML tags translate it to kebab case) !-->
       <!-- pass item to the Item component with :item="item" !-->
       <app-item :item="item" @addToCart="addToCart"></app-item>
-    </v-flex>
+    </div>
   </div>
 </template>
 
