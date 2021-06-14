@@ -15,11 +15,11 @@
           <span class="pad-left">Complete: {{ item.complete }} Quantity: {{ item.order }}</span>
           <div class="pull-right">
             <b-icon-plus-circle class="icon" @click="incOrder(item.id)"></b-icon-plus-circle>
-            <b-icon-check-circle class="pad-left icon" @click="updateComplete(item.id)"></b-icon-check-circle>
+            <b-icon-check-circle class="icon" @click="updateComplete(item.id)"></b-icon-check-circle>
             <router-link :to="{ name: 'editForm', params: { id: item.id } }">
-              <b-icon-pencil-fill class="pad-left icon"></b-icon-pencil-fill>
+              <b-icon-pencil-fill class="icon"></b-icon-pencil-fill>
             </router-link>
-            <b-icon-trash-fill class="pad-left icon" @click="removeFromCart(item)"></b-icon-trash-fill>
+            <b-icon-trash-fill class="icon" @click="removeFromCart(item)"></b-icon-trash-fill>
           </div>
         </div>
       </div>
@@ -36,15 +36,16 @@
           <span class="pad-left">Complete: {{ item.complete }} Quantity: {{ item.order }}</span>
           <div class="pull-right">
             <b-icon-plus-circle class="icon" @click="incOrder(item.id)"></b-icon-plus-circle>
-            <b-icon-x-circle-fill class="pad-left icon" @click="updateComplete(item.id)"></b-icon-x-circle-fill>
+            <b-icon-x-circle-fill class="icon" @click="updateComplete(item.id)"></b-icon-x-circle-fill>
             <router-link :to="{ name: 'editForm', params: { id: item.id } }">
-              <b-icon-pencil-fill class="pad-left icon" font-scale="2.25"></b-icon-pencil-fill>
+              <b-icon-pencil-fill class="icon" font-scale="2.25"></b-icon-pencil-fill>
             </router-link>
-            <b-icon-trash-fill class="pad-left icon" @click="removeFromCart(item)"></b-icon-trash-fill>
+            <b-icon-trash-fill class="icon" @click="removeFromCart(item)"></b-icon-trash-fill>
           </div>
         </div>
       </div>
 
+      <br />
       <!-- add button to clear cart !-->
       <button type="button" class="large-txt-dark-button btn btn-danger" @click="clearCart()">Clear Cart</button>
     </div>
@@ -87,58 +88,6 @@ export default {
     this.$store.dispatch("getCart");
   }
 };
-
-/* Old vuetify
-<v-list-item v-for="item in filterIncompleteItems" :key="item.id" @click="{}">
-        <!-- Item contents !-->
-        <v-list-item-content>{{ item.name }}</v-list-item-content>
-        <v-list-item-content>Complete: {{ item.complete }}</v-list-item-content>
-        <v-list-item-content>Quantity: {{ item.order }}</v-list-item-content>
-
-        <v-list-item-action>
-          <b-icon-plus-circle font-scale="1.25" @click="incOrder(item.id)"></b-icon-plus-circle>
-        </v-list-item-action>
-
-        <v-list-item-action>
-          <b-icon-check-circle class="pad-left" font-scale="2.25" @click="updateComplete(item.id)"></b-icon-check-circle>
-        </v-list-item-action>
-
-        <v-list-item-action>
-          <router-link :to="{ name: 'editForm', params: { id: item.id } }">
-            <b-icon-pencil-fill class="pad-left" font-scale="2.25"></b-icon-pencil-fill>
-          </router-link>
-        </v-list-item-action>
-
-        <v-list-item-action>
-          <b-icon-trash-fill class="pad-left" font-scale="2.25" @click="removeFromCart(item)"></b-icon-trash-fill>
-        </v-list-item-action>
-      </v-list-item>
-
-      <v-list-item v-for="item in filterCompleteItems" :key="item.id" @click="{}">
-        <!-- Item contents !-->
-        <v-list-item-content>{{ item.name }}</v-list-item-content>
-        <v-list-item-content>Complete: {{ item.complete }}</v-list-item-content>
-        <v-list-item-content>Quantity: {{ item.order }}</v-list-item-content>
-
-        <v-list-item-action>
-          <b-icon-plus-circle font-scale="1.25" @click="incOrder(item.id)"></b-icon-plus-circle>
-        </v-list-item-action>
-
-        <v-list-item-action>
-          <b-icon-x-circle-fill class="pad-left" font-scale="2.25" @click="updateComplete(item.id)"></b-icon-x-circle-fill>
-        </v-list-item-action>
-
-        <v-list-item-action>
-          <router-link :to="{ name: 'editForm', params: { id: item.id } }">
-            <b-icon-pencil-fill class="pad-left" font-scale="2.25"></b-icon-pencil-fill>
-          </router-link>
-        </v-list-item-action>
-
-        <v-list-item-action>
-          <b-icon-trash-fill class="pad-left" font-scale="2.25" @click="removeFromCart(item)"></b-icon-trash-fill>
-        </v-list-item-action>
-      </v-list-item>
- */
 </script>
 
 <style>

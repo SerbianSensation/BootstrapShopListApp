@@ -70,7 +70,9 @@ export default {
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 20px;
 }
 </style>
