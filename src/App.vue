@@ -1,8 +1,5 @@
 <template>
   <div class="uiv text-center">
-    <!-- link to google material icons (used for cart page mainly) !-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
     <header>
       <h1 class="pad">Stefan Gligorevic's Shopping List Site</h1>
     </header>
@@ -15,6 +12,7 @@
           <li>
             <router-link class="large-button-txt" to="/cart">
               <b-icon-cart4 font-scale="1.25"></b-icon-cart4>
+              <span>{{ cart.length }}</span>
             </router-link>
           </li>
         </navbar-nav>
