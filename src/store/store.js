@@ -150,8 +150,9 @@ export default new Vuex.Store({
     incOrder({ commit, state }, id) {
       //filter out the item from cart list using id
       const item = state.cart.find(item => item.id === id);
+      const num = parseInt(item.order) + parseInt(1);
       //PATCH to API (baseURL/:id)
-      axios.patch(baseURL + "/" + id, { order: item.order + 1 })
+      axios.patch(baseURL + "/" + id, { order: num })
         .then(() => {
           commit("incOrder", id);
         })
