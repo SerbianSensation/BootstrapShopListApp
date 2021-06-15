@@ -8,20 +8,10 @@
       <input type="text" v-model="searchIncomplete" placeholder="Search Incomplete Items" /> <br>
       <!-- loop through non-completed items first !-->
       <h3 class="text-left">Incomplete Items</h3>
-      <div v-for="item in filterIncompleteItems" :key="item.id" @click="{}">
-        <div class="list-group-item text-left">
-          <h3 style="display: inline-block">{{ item.name }}</h3>
-          <span class="pad-left">Complete: {{ item.complete }} Quantity: {{ item.order }}</span>
-          <div class="pull-right">
-            <b-icon-plus-circle class="icon" @click="incOrder(item.id)"></b-icon-plus-circle>
-            <b-icon-patch-minus class="icon" @click="decOrder(item.id)"></b-icon-patch-minus>
-            <b-icon-check-circle class="icon" @click="updateComplete(item.id)"></b-icon-check-circle>
-            <router-link :to="{ name: 'editForm', params: { id: item.id } }">
-              <b-icon-pencil-fill class="icon"></b-icon-pencil-fill>
-            </router-link>
-            <b-icon-trash-fill class="icon" @click="promptDelete(item);"></b-icon-trash-fill>
-          </div>
-        </div>
+      <div v-for="item in filterIncompleteItems" :key="item.id">
+        <!-- insert CartItem component (cart-item because HTML tags translate it to kebab case) !-->
+        <!-- pass item to the CartItem component with :item="item" !-->
+        <cart-item :item="item" @incOrder="incOrder" @decOrder="decOrder" @updateComplete="updateComplete" @deleteItem="promptDelete"></cart-item>
       </div>
 
       <br />
@@ -30,20 +20,10 @@
       <input type="text" v-model="searchComplete" placeholder="Search Complete Items" /> <br>
       <!-- loop through completed items !-->
       <h3 class="text-left">Completed Items</h3>
-      <div v-for="item in filterCompleteItems" :key="item.id" @click="{}">
-        <div class="list-group-item text-left">
-          <h3 style="display: inline-block">{{ item.name }}</h3>
-          <span class="pad-left">Complete: {{ item.complete }} Quantity: {{ item.order }}</span>
-          <div class="pull-right">
-            <b-icon-plus-circle class="icon" @click="incOrder(item.id)"></b-icon-plus-circle>
-            <b-icon-patch-minus class="icon" @click="decOrder(item.id)"></b-icon-patch-minus>
-            <b-icon-x-circle-fill class="icon" @click="updateComplete(item.id)"></b-icon-x-circle-fill>
-            <router-link :to="{ name: 'editForm', params: { id: item.id } }">
-              <b-icon-pencil-fill class="icon" font-scale="2.25"></b-icon-pencil-fill>
-            </router-link>
-            <b-icon-trash-fill class="icon" @click="promptDelete(item);"></b-icon-trash-fill>
-          </div>
-        </div>
+      <div v-for="item in filterCompleteItems" :key="item.id">
+        <!-- insert CartItem component (cart-item because HTML tags translate it to kebab case) !-->
+        <!-- pass item to the CartItem component with :item="item" !-->
+        <cart-item :item="item" @incOrder="incOrder" @decOrder="decOrder" @updateComplete="updateComplete" @deleteItem="promptDelete"></cart-item>
       </div>
 
       <delete-modal :triggerDelete="triggerDelete" @cancelDelete="cancelDelete" @delete="removeItem"></delete-modal>
@@ -58,10 +38,12 @@
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex';
 import DeleteModal from "../components/DeleteModal";
+import CartItem from "../components/CartItem";
 
 export default {
   components: {
-    deleteModal: DeleteModal
+    deleteModal: DeleteModal,
+    cartItem: CartItem
   },
   data() {
     return {
