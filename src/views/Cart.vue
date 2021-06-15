@@ -1,5 +1,4 @@
 <template>
-  <!-- <v-list> !-->
   <div>
     <h2 class="pad" v-if="!cart.length">Shopping Cart is empty</h2>
     <div v-else>
@@ -20,7 +19,7 @@
             <router-link :to="{ name: 'editForm', params: { id: item.id } }">
               <b-icon-pencil-fill class="icon"></b-icon-pencil-fill>
             </router-link>
-            <b-icon-trash-fill class="icon" @click="removeFromCart(item)"></b-icon-trash-fill>
+            <b-icon-trash-fill class="icon" @click="promptDelete(item);"></b-icon-trash-fill>
           </div>
         </div>
       </div>
@@ -42,28 +41,34 @@
             <router-link :to="{ name: 'editForm', params: { id: item.id } }">
               <b-icon-pencil-fill class="icon" font-scale="2.25"></b-icon-pencil-fill>
             </router-link>
-            <b-icon-trash-fill class="icon" @click="removeFromCart(item)"></b-icon-trash-fill>
+            <b-icon-trash-fill class="icon" @click="promptDelete(item);"></b-icon-trash-fill>
           </div>
         </div>
       </div>
+
+      <delete-modal :triggerDelete="triggerDelete" @cancelDelete="cancelDelete" @delete="removeItem"></delete-modal>
 
       <br />
       <!-- add button to clear cart !-->
       <button type="button" class="large-txt-dark-button btn btn-danger" @click="clearCart()">Clear Cart</button>
     </div>
   </div>
-
-  <!-- </v-list> !-->
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex';
+import DeleteModal from "../components/DeleteModal";
 
 export default {
+  components: {
+    deleteModal: DeleteModal
+  },
   data() {
     return {
       searchComplete: '',
-      searchIncomplete: ''
+      searchIncomplete: '',
+      triggerDelete: false,
+      currentItem: Object
     };
   },
   computed: {
@@ -84,7 +89,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["removeFromCart", "updateComplete", "updateCurrentItem", "clearCart", "incOrder", "decOrder"])
+    ...mapActions(["removeFromCart", "updateComplete", "clearCart", "incOrder", "decOrder"]),
+    promptDelete(item) {
+      this.currentItem = item;
+      this.triggerDelete = true;
+    },
+    removeItem() {
+      this.removeFromCart(this.currentItem);
+      this.triggerDelete = false;
+      this.currentItem = Object;
+    },
+    cancelDelete() {
+      this.currentItem = Object;
+      this.triggerDelete = false;
+    }
   },
   mounted() {
     this.$store.dispatch("getCart");

@@ -47,8 +47,8 @@ export default new Vuex.Store({
       const item = state.cart.find(item => item.id === id);
       item.order -= 1;
     },
-    updateCurrentItem(state, payload) {
-      state.item = payload;
+    updateCurrentItem(state, item) {
+      state.item = item;
     },
     clearCart(state) {
       state.cart = [];
